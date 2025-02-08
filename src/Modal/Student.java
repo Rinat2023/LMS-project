@@ -21,7 +21,7 @@ public class Student extends User {
                 .getTeacher().getCourses().stream()
                 .filter(course -> course.getTitle().equals(admin.getCoursesList().get(choice - 1).getTitle()))
                 .findFirst().orElse(null).addStudent(me);
-        System.out.println("Вы записались на курс ' " + admin.getCoursesList().get(choice - 1).getTitle() + " ' ");
+        System.out.println("Вы записались на курс ' " + admin.getCoursesList().get(choice - 1).getTitle() + " '  ^_^");
     }
 
     public void executingTask(Student me, Admin admin) {
@@ -51,9 +51,9 @@ public class Student extends User {
         courses.forEach(course -> {
             System.out.println("Курс: " + course.getTitle());
             course.getAssignments().forEach(assignment -> {
-                System.out.println("  Задание: " + assignment.getTitle());
+                System.out.println("Задание: " + assignment.getTitle());
                 assignment.getGrades().forEach((studentName, grade) ->
-                        System.out.println("    Студент: " + studentName + " - Оценка: " + grade)
+                        System.out.println(studentName + " - Оценка: " + grade)
                 );
             });
         });

@@ -21,28 +21,8 @@ public class Course {
         students.add(student);
     }
 
-    public void removeStudent(){
-
-    }
-
-    public void addTask(){
-
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Teacher getTeacher() {
@@ -57,16 +37,8 @@ public class Course {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
     public List<Assignment> getAssignments() {
         return assignments;
-    }
-
-    public void setAssignments(List<Assignment> assignments) {
-        this.assignments = assignments;
     }
 
     @Override

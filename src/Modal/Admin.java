@@ -2,7 +2,6 @@ package Modal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 public class Admin extends User {
     private List<User> userList;
@@ -90,7 +89,6 @@ public class Admin extends User {
             newTeacher.getCourses().add(foundedCourse);
 
             System.out.println("преподаватель успешно назначен ^_^");
-            System.out.println(coursesList);
         }
     }
 
@@ -98,15 +96,7 @@ public class Admin extends User {
         return userList;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-
     public List<Course> getCoursesList() {
         return coursesList;
-    }
-
-    public void setCoursesList(List<Course> coursesList) {
-        this.coursesList = coursesList;
     }
 }

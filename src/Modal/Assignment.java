@@ -27,32 +27,12 @@ public class Assignment {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Map<String, String> getStudentsAnswers() {
         return studentsAnswers;
     }
 
-    public void setStudentsAnswers(Map<String, String> studentsAnswers) {
-        this.studentsAnswers = studentsAnswers;
-    }
-
     public Map<String, Integer> getGrades() {
         return grades;
-    }
-
-    public void setGrades(Map<String, Integer> grades) {
-        this.grades = grades;
     }
 
     @Override

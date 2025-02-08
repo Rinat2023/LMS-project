@@ -37,7 +37,7 @@ public class Teacher extends User {
         String description = scanner.next();
         Assignment newAssignment = new Assignment(title, description, new TreeMap<>(), new TreeMap<>());
         course.getAssignments().add(newAssignment);
-        System.out.println("Задание успешно добавлено!");
+        System.out.println("Задание успешно добавлено ^_^");
     }
 
     public void checkTask() {
@@ -79,10 +79,8 @@ public class Teacher extends User {
         System.out.println("Введите оценку: ");
         int grade = scanner.nextInt();
 
-        // Ставим оценку студенту в курсе
         selectedAssignment.givingGrades(selectedStudent.getName(), grade);
 
-        // Ставим оценку в списке заданий студента
         Assignment studentAssignment = selectedStudent.getCourses().stream()
                 .filter(course -> course.getTitle().equals(selectedCourse.getTitle()))
                 .findFirst().orElseThrow()
@@ -90,16 +88,16 @@ public class Teacher extends User {
 
         studentAssignment.givingGrades(selectedStudent.getName(), grade);
 
-        System.out.println("Оценка успешно поставлена!");
+        System.out.println("Оценка успешно поставлена ^_^");
     }
 
     public void viewReports() {
         courses.forEach(course -> {
             System.out.println("Курс: " + course.getTitle());
             course.getAssignments().forEach(assignment -> {
-                System.out.println("  Задание: " + assignment.getTitle());
+                System.out.println("Задание: " + assignment.getTitle());
                 assignment.getGrades().forEach((studentName, grade) ->
-                        System.out.println("    Студент: " + studentName + " - Оценка: " + grade)
+                        System.out.println(studentName + " - Оценка: " + grade)
                 );
             });
         });
@@ -107,9 +105,5 @@ public class Teacher extends User {
 
     public List<Course> getCourses() {
         return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
     }
 }

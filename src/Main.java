@@ -44,9 +44,9 @@ public class Main {
     public static void mainMenu() {
         System.out.println("""
                 Добро пожаловать в систему управления обучением (LMS)
-                1.	Вход
-                2.	Регистрация
-                3.	Выход
+                1.	sign-in
+                2.	sign-up
+                3.	sign-out
                 """);
     }
 
@@ -59,16 +59,16 @@ public class Main {
                     """);
         } else if (whichMenu == 2) {
             System.out.println("""
-                    1.	Добавить пользователя.
-                    2.	Удалить пользователя.
-                    3.	Просмотреть список пользователей.
+                    1.	Добавить пользователя:
+                    2.	Удалить пользователя:
+                    3.	Просмотреть список пользователей:
                     4.  Назад
                     """);
         } else if (whichMenu == 3) {
             System.out.println("""
-                    1.	Создать курс.
-                    2.	Назначить преподавателя.
-                    3.	Просмотреть список курсов.
+                    1.	Создать курс:
+                    2.	Назначить преподавателя:
+                    3.	Просмотреть список курсов:
                     4.  Назад
                     """);
         }
@@ -81,7 +81,6 @@ public class Main {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1: {
-                    System.out.println("Управление пользователями:");
                     adminMenu(2);
                     int choice2 = scanner.nextInt();
                     switch (choice2) {
@@ -94,7 +93,7 @@ public class Main {
                             break;
                         }
                         case 3: {
-                            me.getUserList().stream().forEach(user -> System.out.println(user.getId() + ". " + user.getName()));
+                            me.getUserList().forEach(user -> System.out.println(user.getId() + ". " + user.getName()));
                             break;
                         }
                         case 4: {
@@ -116,7 +115,7 @@ public class Main {
                             break;
                         }
                         case 3: {
-                            me.getCoursesList().stream().forEach(System.out::println);
+                            me.getCoursesList().forEach(c -> System.out.println(c.getTitle() + ", Teacher: " + c.getTeacher().getName()));
                             break;
                         }
                         case 4: {
@@ -145,17 +144,17 @@ public class Main {
             }
             case 2: {
                 System.out.println("""
-                        1.	Создать курс.
-                        2.	Добавить задание.
-                        3.	Просмотреть список студентов на курсе.
+                        1.	Создать курс:
+                        2.	Добавить задание:
+                        3.	Просмотреть список студентов на курсе:
                         4.  Назад
                         """);
                 break;
             }
             case 3: {
                 System.out.println("""
-                        1.	Посмотреть работы студентов.
-                        2.	Выставить оценку.
+                        1.	Посмотреть работы студентов:
+                        2.	Выставить оценку:
                         3.  Назад
                         """);
                 break;
@@ -177,7 +176,7 @@ public class Main {
                     } else if (newChoice == 2) {
                         me.addTask();
                     } else if (newChoice == 3) {
-                        me.getCourses().forEach(course -> course.getStudents().forEach(student -> System.out.println(student.getName())));
+                        me.getCourses().forEach(course -> course.getStudents().forEach(student -> System.out.println(student.getId() + ". " + student.getName())));
                     } else {
                         break;
                     }
@@ -208,10 +207,10 @@ public class Main {
 
     public static void studentMenu() {
         System.out.println("""
-                1.	Просмотр доступных курсов
-                2.	Запись на курс
-                3.	Выполнение задания
-                4.	Просмотреть отчеты
+                1.	Просмотр доступных курсов:
+                2.	Запись на курс:
+                3.	Выполнение задания:
+                4.	Просмотреть отчеты:
                 5.  Назад
                 """);
     }
@@ -240,7 +239,6 @@ public class Main {
                     break;
                 }
                 case 5: {
-
                     break;
                 }
             }

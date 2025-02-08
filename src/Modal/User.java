@@ -1,6 +1,8 @@
 package Modal;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.Scanner;
 
 abstract public class User {
     private static int staticid;
@@ -20,26 +22,33 @@ abstract public class User {
     }
 
     public static User signIn(Admin admin) {
-            System.out.println("Введите email: ");
-            String email = scanner.next();
-            Optional optionalUser = admin.getUserList().stream().filter(user -> user.email.equals(email)).findFirst();
-            if (optionalUser.isPresent()) {
-                User foundedUser = (User) optionalUser.get();
-                System.out.println("Пользователь найден: " + foundedUser.name + " ^_^ ");
-                if (((User) optionalUser.get()).getRole() == Role.ADMINISTRATOR){
-                    Admin adminn = (Admin) foundedUser;
+        System.out.println("Введите email: ");
+        String email = scanner.next();
+        Optional optionalUser = admin.getUserList().stream().filter(user -> user.email.equals(email)).findFirst();
+        if (optionalUser.isPresent()) {
+            User foundedUser = (User) optionalUser.get();
+            if (((User) optionalUser.get()).getRole() == Role.ADMINISTRATOR) {
+                int adminPassword = 456;
+                Admin adminn = (Admin) foundedUser;
+                System.out.println("Введите password: ");
+                int password = scanner.nextInt();
+                scanner.nextLine();
+                if (adminPassword == password) {
                     return adminn;
-                } else if (((User) optionalUser.get()).getRole() == Role.TEACHER) {
-                    Teacher teacher = (Teacher) foundedUser;
-                    return teacher;
+                } else {
+                    System.out.println("не правильный пароль -_-");
                 }
-                else {
-                    return foundedUser;
-                }
-            } else {
-                System.out.println("Пользователь с таким email не найден.");
                 return null;
+            } else if (((User) optionalUser.get()).getRole() == Role.TEACHER) {
+                Teacher teacher = (Teacher) foundedUser;
+                return teacher;
+            } else {
+                return foundedUser;
             }
+        } else {
+            System.out.println("Пользователь с таким email не найден -_-");
+            return null;
+        }
 
     }
 
@@ -54,32 +63,16 @@ abstract public class User {
         return newUser;
     }
 
-    public static User getInfo() {
-        return null;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Role getRole() {
